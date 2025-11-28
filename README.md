@@ -1,4 +1,4 @@
-# ORRBUS Hyderabad
+# ORR BUS Hyderabad
 
 A public bus information website for Hyderabad built using GTFS data.
 
