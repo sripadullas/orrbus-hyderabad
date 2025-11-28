@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Route Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="nav">Route Planner</div>
+
+<div class="list">
+  <input id="from" placeholder="From stop" style="width:100%;padding:10px;">
+  <input id="to" placeholder="To stop" style="width:100%;padding:10px;margin-top:10px;">
+  <button onclick="plan()" style="width:100%;padding:12px;margin-top:10px;">Search</button>
+</div>
+
+<div class="list" id="results"></div>
+
+<script>
+function plan() {
+  let from = document.getElementById("from").value;
+  let to = document.getElementById("to").value;
+
+  fetch(`https://orrbus.friendsofrtc.com/api/plan?from=${from}&to=${to}`)
+    .then(r => r.json())
+    .then(data => {
+      const el = document.getElementById("results");
+      el.innerHTML = "";
+
+      if (!data.length) {
+        el.innerHTML = "No direct routes found.";
+        return;
+      }
+
+      data.forEach(r => {
+        el.innerHTML += `
+          <div>
+            <b>Route ${r.route_short_name}</b><br>
+            ${r.from_stop} → ${r.to_stop}
+          </div>
+        `;
+      });
+    });
+}
+</script>
+
+</body>
+</html>
