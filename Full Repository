@@ -1,0 +1,20 @@
+orrbus-hyderabad/
+│
+├── backend/
+│   ├── package.json
+│   ├── server.js
+│   ├── gtfs_import.js
+│   ├── db.sqlite        (auto-generated after import)
+│   └── gtfs/
+│       ├── routes.txt
+│       ├── trips.txt
+│       ├── stops.txt
+│       └── stop_times.txt
+│
+└── frontend/
+    ├── index.html
+    ├── planner.html
+    ├── route.html
+    ├── style.css
+    ├── map.js
+    └── assets/   (empty for now)
